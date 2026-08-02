@@ -1,24 +1,14 @@
 [project]
 name = "pistegrade"
 version = "0.1.0"
-description = "An automatic ski run grader"
+description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "Haylam Yuen", email = "haylam.yuen@gmail.com" }
-]
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "catboost>=1.2.10",
-    "dataclasses>=0.8",
     "gpxpy>=1.6.2",
+    "numpy>=2.5.1",
     "pandas>=3.0.5",
     "requests>=2.34.2",
-    "typing>=3.10.0.0",
+    "scikit-learn>=1.9.0",
 ]
-
-[project.scripts]
-pistegrade = "pistegrade:main"
-
-[build-system]
-requires = ["uv_build>=0.12.1,<0.13.0"]
-build-backend = "uv_build"

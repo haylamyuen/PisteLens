@@ -53,7 +53,7 @@ def parse(data: dict) -> List[Piste ]:
                 difficulty=tags.get("piste:difficulty"),
                 type=tags.get("piste:type"),
                 grooming=tags.get("piste:grooming") or "classic",
-                points=points,)
+                points=points)
         
         ways.append(piste)
 
@@ -62,7 +62,7 @@ def parse(data: dict) -> List[Piste ]:
 def query_op(query: str)  -> dict:
     for endpoint in ENDPOINTS:
         try:
-            response = requests.post(endpoint, data={"data": query}, headers=HEADER, timeout=TIMEOUT,)
+            response = requests.post(endpoint, data={"data": query}, headers=HEADER, timeout=TIMEOUT)
             response.raise_for_status()
             return response.json()
         

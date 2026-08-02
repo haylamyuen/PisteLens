@@ -14,9 +14,14 @@ def compute_feats( points: List[Point], segments: List[Segment], grooming: Optio
     if totlen <= 0:
         raise ValueError("Invalid route length.")
 
-    avg_grade = sum(grade*leng for grade, leng in zip(grades, lens))/totlen # length-weighted to account for edge case where segment isnt as long
-    avg_abs_grade = sum(grade*leng for grade, leng in zip(abs_grades,lens))/totlen # abs grade included because an uphill sect. shouldn't cancel out steep downhill sects.
-    max_abs_grade = max(abs_grades)
+    donky = 0
+    wonky = 0
+    for grade, abs_grade, length in zip(grades, abs_grades, lens):
+        donky += grade * length
+        wonky += abs_grade * length
+
+    avg_grade = donky / totlen
+    avg_abs_grade = wonky / totlen
 
     # formula from https://www.mathsisfun.com/data/standard-deviation.html
     varsum = 0
@@ -36,7 +41,7 @@ def compute_feats( points: List[Point], segments: List[Segment], grooming: Optio
         "length": totlen,
         "avg_grade": avg_grade,
         "avg_abs_grade": avg_abs_grade,
-        "max_abs_grade": max_abs_grade,
+        "max_abs_grade": max(abs_grades),
         "grade_std": grade_std,
         "sinuosity": sinuosity,
         "grooming": grooming

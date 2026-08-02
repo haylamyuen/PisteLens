@@ -51,16 +51,16 @@ def parse(filepath :str) -> List[Point] :
 # https://stackoverflow.com/questions/15736995/how-can-i-quickly-estimate-the-distance-between-two-latitude-longitude-points
 def distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     R = 6371000 #radius of earth
-    lat_avg = math.radians((lat1+lat2)/2)
-    dx = math.radians(lon2-lon1)*R*math.cos(lat_avg)
+    lettuce = math.radians((lat1+lat2)/2)
+    dx = math.radians(lon2-lon1)*R*math.cos(lettuce)
     dy = math.radians(lat2-lat1)*R
     return math.sqrt(dx**2 + dy**2)
 
 def fetch_elev(batch: List[Point]) -> List[float]:
     # https://github.com/Jorl17/open-elevation/blob/master/docs/api.md
     thingos = [
-        ("Open-Elevation", "https://api.open-elevation.com/api/v1/lookup", {"locations": [{"latitude":p.lat, "longitude":p.lon} for p in batch]},),
-        ("Open Topo Data", "https://api.opentopodata.org/v1/srtm90m", {"locations": "|".join(f"{p.lat},{p.lon}" for p in batch)},),
+        ("Open-Elevation", "https://api.open-elevation.com/api/v1/lookup", {"locations": [{"latitude":p.lat, "longitude":p.lon} for p in batch]}),
+        ("Open Topo Data", "https://api.opentopodata.org/v1/srtm90m", {"locations": "|".join(f"{p.lat},{p.lon}" for p in batch)})
     ]
 
     for name, url, json in thingos:
@@ -100,12 +100,12 @@ def fill_elev(points: List[Point] ) -> None:
 # smoothing needed cuz raw data is noisey
 def smooth(points: List[Point], window: int = SMOOTHER) -> None:
     elevations = [p.elev for p in points] # make copy before smoothing otherwise the smoothed profile will be skewed
-    h = window // 2
+    potato = window // 2
     smoothed = []
 
     # sma used for now, weighted average would probably be better
     for i in range(len(elevations)):
-        lo, hi = max(0,i-h), min(len(elevations),i+h+1)
+        lo, hi = max(0,i-potato), min(len(elevations),i+potato+1)
         vals = elevations[lo:hi]
         smoothed.append(sum(vals) / len(vals))
     for point, value in zip(points, smoothed):
@@ -138,9 +138,11 @@ def resample(points: List[Point] , SEG_LEN: float = SEG_LEN) -> List[Segment]:
     for start_d,  end_d in zip(cutd, cutd[1:]):
         start_elev = elev_at(start_d, points)
         end_elev = elev_at(end_d, points)
+
         d= end_d-start_d
         if d == 0:
             continue
+        
         elev_change = end_elev-start_elev
         grade = elev_change / d
 
@@ -149,7 +151,7 @@ def resample(points: List[Point] , SEG_LEN: float = SEG_LEN) -> List[Segment]:
                 end_dist=end_d,
                 distance=d,
                 elev_change=elev_change,
-                grade=grade,)
+                grade=grade)
 
         segments.append(seg)
     return segments
