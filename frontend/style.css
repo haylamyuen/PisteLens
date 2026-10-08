@@ -68,6 +68,29 @@ nav a.active {
     font-weight: 600;
 }
 
+.yes {
+    width: 10rem;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.yesactive {
+    width: 10rem;
+    align-items: center;
+    gap: 0.25rem;
+    background: #61b0f0;
+    padding: 0.35rem 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+}
 
 main {
     max-width: 62rem;
@@ -359,4 +382,3 @@ footer {
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
-
