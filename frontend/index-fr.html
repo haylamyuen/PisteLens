@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a class="active" href="index-fr.html">Accueil</a>
+    <a href="tools-fr.html">Outils avancés</a>
+    <a href="data-fr.html">Données</a>
+    <a href="about-fr.html">À propos</a>
+    <a href="settings-fr.html">Paramètres</a>
+</nav>
+
+<main>
+
+
+    <div class="hero">
+        <h1>Bienvenue, Snowbender</h1>
+        <p class="underneath_thing">Recherchez une piste pour commencer...</p>
+    </div>
+
+    <div class="searchbar">
+        <input type="search" id="q" placeholder="Rechercher une piste ou une station..." autocomplete="on">
+        <button type="button" id="filter" aria-expanded="false">Filtres</button>
+        <button type="button" class="primary" id="searchbutton">Rechercher</button>
+    </div>
+
+    <div class="filters card" id="filters" hidden>
+        <div class="filtergrid">
+            <label>
+                Station
+                <select id="fresort">
+                    <option value="">Toutes les stations</option>
+                </select>
+            </label>
+
+            <label>
+                Difficulté officielle
+                <select id="fgrade">
+                    <option value="">Toute difficulté</option>
+                    <option value="novice">Débutant</option>
+                    <option value="easy">Facile</option>
+                    <option value="intermediate">Intermédiaire</option>
+                    <option value="advanced">Avancé</option>
+                    <option value="expert">Expert</option>
+                    <option value="extreme">Extrême</option>
+                </select>
+            </label>
+
+            <label>
+                Damage
+                <select id="fgrooming">
+                    <option value="">Toute surface</option>
+                    <option value="classic">Damée</option>
+                    <option value="mogul">Bosses</option>
+                    <option value="backcountry">Non damée</option>
+                </select>
+
+            </label>
+
+            <label>
+                Note globale
+                <span class="range">
+                    <input type="number" id="fratingmin" min="0" max="5" step="0.1" placeholder="min.">
+                    <span class="softenifyes">à</span>
+                    <input type="number" id="fratingmax" min="0" max="5" step="0.1" placeholder="max.">
+                </span>
+            </label>
+
+            <label>
+                Longueur (m)
+                <span class="range">
+                    <input type="number" id="flenmin" min="0" step="1" placeholder="min.">
+                    <span class="softenifyes">à</span>
+                    <input type="number" id="flenmax" min="0" step="1" placeholder="max.">
+                </span>
+            </label>
+        </div>
+        <p><button type="button" id="clearbtn">Effacer les filtres</button></p>
+    </div>
+
+    <div id="resultspanel" hidden>
+    <p class="count" id="count"></p>
+
+    <div class="tableee">
+    <table>
+        <thread>
+            <tr>
+                <th>Piste</th>
+                <th>Station</th>
+                <th>Difficulté officielle</th>
+                <th>Note globale</th>
+                <th>Longueur</th>
+            </tr>
+        </thread>
+        <tbody id="results"></tbody>
+
+    </table>
+    </div>
+    </div>
+
+</main>
+
+<footer>
+    Le Yeow est de retour. Méfiez-vous. Il est encore temps de s'échapper. Le compte à rebours est lancé. Isaac arrive.
+</footer>
+
+<script src="search-fr.js"></script>
+
+</body>

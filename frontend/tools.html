@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | Advanced Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a href="index.html">Home</a>
+    <a class="active" href="tools.html">Advanced Tools</a>
+    <a href="data.html">Data</a>
+    <a href="about.html">About</a>
+    <a href="settings.html">Settings</a>
+</nav>
+
+<main>
+    <h1>Grade Your Own Run</h1>
+
+    <fieldset>
+        <legend>Options</legend>
+        <label>Calibrate to <select id="ref"><option value="">No calibration</option></select></label>
+        <label>Grooming
+            <select id="grooming">
+                <option value="classic">Groomed</option>
+                <option value="mogul">Mogul</option>
+                <option value="backcountry">Ungroomed</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <div class="gg">
+        <div class="card">
+            <div class="gl">Upload GPX</div>
+            <label>GPX file <input type="file" id="gpx" accept=".gpx"></label>
+            <p><button type="button" class="primary" id="gradegpx">Grade GPX</button></p>
+        </div>
+
+        <div class="card">
+            <div class="gl">Enter Features</div>
+            <label>Length (m) <input type="number" id="length" step="any"></label>
+            <label>Avg grade (e.g. -0.19) <input type="number" id="avg_grade" step="any"></label>
+            <label>Avg abs grade <input type="number" id="avg_abs_grade" step="any"></label>
+            <label>Max abs grade <input type="number" id="max_abs_grade" step="any"></label>
+            <label>Grade std dev <input type="number" id="grade_std" step="any"></label>
+            <label>Sinuosity <input type="number" id="sinuosity" step="any"></label>
+            <p><button type="button" class="primary" id="gradefeats">Grade Features</button></p>
+        </div>
+    </div>
+
+    <div class="gg" style="margin-top: 1.25rem">
+        <div class="card"><div class="gl">Global grade</div><div class="gv" id="globalval">-</div></div>
+        <div class="card"><div class="gl">Calibrated grade</div><div class="gv" id="calval">-</div></div>
+    </div>
+    <p class="softenifyes" id="msg"></p>
+</main>
+
+<footer>
+    The Yeow has Returned. Beware. There is still time to escape. The clock is ticking. Isaac is coming.
+</footer>
+
+<script src="chunkymunky.js"></script>
+
+</body>
+</html>
+

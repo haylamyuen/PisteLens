@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | Outils avancés</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a href="index-fr.html">Accueil</a>
+    <a class="active" href="tools-fr.html">Outils avancés</a>
+    <a href="data-fr.html">Données</a>
+    <a href="about-fr.html">À propos</a>
+    <a href="settings-fr.html">Paramètres</a>
+</nav>
+
+<main>
+    <h1>Évaluez votre propre piste</h1>
+
+    <fieldset>
+        <legend>Options</legend>
+        <label>Calibrer selon <select id="ref"><option value="">Aucun calibrage</option></select></label>
+        <label>Damage
+            <select id="grooming">
+                <option value="classic">Damée</option>
+                <option value="mogul">Bosses</option>
+                <option value="backcountry">Non damée</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <div class="gg">
+        <div class="card">
+            <div class="gl">Importer un GPX</div>
+            <label>Fichier GPX <input type="file" id="gpx" accept=".gpx"></label>
+            <p><button type="button" class="primary" id="gradegpx">Évaluer le GPX</button></p>
+        </div>
+
+        <div class="card">
+            <div class="gl">Saisir les caractéristiques</div>
+            <label>Longueur (m) <input type="number" id="length" step="any"></label>
+            <label>Pente moyenne (p. ex. -0.19) <input type="number" id="avg_grade" step="any"></label>
+            <label>Pente absolue moyenne <input type="number" id="avg_abs_grade" step="any"></label>
+            <label>Pente absolue maximale <input type="number" id="max_abs_grade" step="any"></label>
+            <label>Écart type de la pente <input type="number" id="grade_std" step="any"></label>
+            <label>Sinuosité <input type="number" id="sinuosity" step="any"></label>
+            <p><button type="button" class="primary" id="gradefeats">Évaluer les caractéristiques</button></p>
+        </div>
+    </div>
+
+    <div class="gg" style="margin-top: 1.25rem">
+        <div class="card"><div class="gl">Note globale</div><div class="gv" id="globalval">-</div></div>
+        <div class="card"><div class="gl">Note calibrée</div><div class="gv" id="calval">-</div></div>
+    </div>
+    <p class="softenifyes" id="msg"></p>
+</main>
+
+<footer>
+    Le Yeow est de retour. Méfiez-vous. Il est encore temps de s'échapper. Le compte à rebours est lancé. Isaac arrive.
+</footer>
+
+<script src="chunkymunky-fr.js"></script>
+
+</body>
+</html>

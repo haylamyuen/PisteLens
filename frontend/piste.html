@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PisteLens</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <span class="brand">PisteLens</span>
+  <a href="index.html">Home</a>
+  <a href="tools.html">Advanced Tools</a>
+  <a href="data.html">Data</a>
+  <a href="about.html">About</a>
+  <a href="settings.html">Settings</a>
+</nav>
+
+<main>
+  <p><a class="back" href="index.html">Back to search</a></p>
+
+  <div class="card" id="notfound" hidden>
+    <h1>Piste not found</h1>
+    <p class="muted" id="whoopsnotfound"></p>
+  </div>
+
+
+  <div id="piste" hidden>
+    <h1 id="name"></h1>
+
+    <div class="gg">
+
+      <div class="card">
+        <div class="gl">Global grade</div>
+        <div class="gv" id="globalval">-</div>
+        <div id="globalcat"></div>
+        <p class="muted">This is the true difficulty of the run based on the terrain of the piste. It is unaffected by resort standards.</p>
+      </div>
+
+      <div class="card">
+        <div class="gl">Calibrated grade</div>
+        <p class="muted">If this run was featured in the resort you pick below, it would likely be rated...</p>
+        <div class="gv" id="calval">-</div>
+        <div id="calcat" class="muted">Pick a resort below.</div>
+        <label>
+
+          Calibrate to
+          <select id="ref">
+            <option value="">Choose a resort</option>
+          </select>
+        </label>
+        <p class="muted" id="calnote"></p>
+      </div>
+    </div>
+
+
+    <h2>Location</h2>
+    <div class="map" id="map"></div>
+    <p class="muted" id="mapnote"></p>
+    
+  </div>
+</main>
+
+<footer>
+  The Yeow has Returned. Beware. There is still time to escape. The clock is ticking. Isaac is coming.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script> <!-- leaflet für die Karte -->
+<script src="piste.js"></script>
+
+</body>
+</html>
+

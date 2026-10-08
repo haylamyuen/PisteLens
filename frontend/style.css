@@ -1,0 +1,362 @@
+/* A LOT OF THE CSS USED WAS COPIED DIRECTLY FROM MY YEAR 9 PROJECT TO SAVE TIME */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
+:root {
+    --main: #16202b;
+    --softenifyes: #6b7885;
+    --line: #e2e7ec;
+    --bg: url("bgyes.png");
+    --thingy: #ffffff;
+    --brand: #233853;
+    --accent: #2f7fd1;
+    --radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.isaac {
+    text-decoration: none;
+    color: #000000;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.55;
+    color: var(--main);
+    background: var(--bg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    background: var(--brand);
+    padding: 0.6rem 2rem;
+}
+
+nav .brand {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    margin-right: 2rem;
+}
+
+nav a {
+    color: #c3d5e6;
+    text-decoration: none;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+nav a.hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a.active {
+    color: var(--brand);
+    background: #ffffff;
+    font-weight: 600;
+}
+
+
+main {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.9rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.underneath_thing {
+    color: var(--softenifyes);
+    font-size: 1.05rem;
+    max-width: 46rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+}
+
+.hero .underneath_thing {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background: var(--thingy);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--thingy);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.35rem 0.35rem 0.35rem 1.1rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.searchbar:focus-within {
+    border-color: var(--accent);
+}
+
+.searchbar input[type="search"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0;
+    min-width: 0;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #ffffff;
+    color: var(--main);
+    padding: 0.45rem 1rem;
+}
+
+button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+button.primary:hover {
+    background: #2a6fb8;
+    color: #ffffff;
+}
+
+.filters {
+    max-width: 40rem;
+    margin: 0.75rem auto 0;
+}
+
+.filtergrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filtergrid label {
+    margin-top: 0;
+    font-size: 0.85rem;
+    color: var(--softenifyes);
+}
+
+.filtergrid input {
+    display: block;
+    min-width: 0;
+    width: 9rem;
+}
+.filtergrid select {
+    display: block;
+    min-width: 0;
+    width: 9rem;
+}
+
+.range {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.range input {
+    width: 4.5rem;
+}
+
+label {
+    display: block;
+    margin-top: 0.85rem;
+    font-size: 0.9rem;
+}
+
+input {
+    padding: 0.45rem 0.6rem;
+    border: 1px solid ar(--line);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--main);
+    min-width: 14rem;
+}
+select {
+    padding: 0.45rem 0.6rem;
+    border: 1px solid ar(--line);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--main);
+    min-width: 14rem;
+}
+
+
+input:focus {
+    outline: 2px solid rgba(67, 130, 210, 0.35);
+    border-color: var(--accent);
+}
+
+fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--thingy);
+    margin: 0 0 1.25rem;
+    padding: 0.5rem 1.25rem 1.25rem;
+}
+
+legend {
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0 0.4rem;
+}
+
+.tableee {
+    overflow-x: auto;
+    background: var(--thingy);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+th {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    background: #f0f4f8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--softenifyes);
+}
+td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+/* i searched up how to do the following using Google Gemini */
+tdbody tr:last-child td {
+    border-bottom: none;
+}
+tdbody tr:hover td {
+    background: #f9fbfd;
+}
+/* up until here */
+
+
+.diff {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    background: #eef2f6;
+    color: var(--softenifyes);
+}
+
+.diff.novice, .diff.easy { background: #e4f1e6; color: #2c6b3b; }
+.diff.intermediate { background: #e3eefa; color: #1f5c96; }
+.diff.advanced, .diff.expert { background: #fdeaea; color: #a33232; }
+.diff.extreme { background: #2b2b2b; color: #fff; }
+
+
+.softenifyes {
+    color: var(--softenifyes);
+}
+.count{
+    color: var(--softenifyes);
+    font-size: 1rem;
+    margin: 1.25rem 0 0.5rem;
+}
+
+footer {
+    border-top: 1px solid var(--line);
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    color: var(--softenifyes);
+    font-size: 0.85rem;
+    text-align: center;
+}
+.back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back:hover {
+  color: var(--accent);
+}
+
+.gg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.gg .card {
+  flex: 1 1 16rem;
+  margin-bottom: 0;
+}
+
+.gg select {
+  min-width: 0;
+  width: 100%;
+}
+
+.gl {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.gv {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0.25rem 0;
+}
+
+.map {
+  height: 24rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+

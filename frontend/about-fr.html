@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | À propos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a href="index-fr.html">Accueil</a>
+    <a href="tools-fr.html">Outils avancés</a>
+    <a href="data-fr.html">Données</a>
+    <a class="active" href="about-fr.html">À propos</a>
+    <a href="settings-fr.html">Paramètres</a>
+</nav>
+
+<main>
+    <h1>À propos de PisteLens</h1>
+
+    <div class="card">
+        <h2>Le problème</h2>
+        <p>Chaque station de ski classe ses propres pistes, et chacune le fait différemment. Une piste intermédiaire dans une station peut sembler
+            avancée dans une autre : la difficulté indiquée sur un plan des pistes ne dit donc pas grand-chose quand on visite un nouvel endroit.</p>
+
+        <h2>L'objectif</h2>
+        <p>PisteLens attribue à chaque piste une difficulté équitable et comparable, fondée uniquement sur son terrain, afin que vous sachiez
+            à quel point une piste est vraiment difficile avant d'arriver en haut.</p>
+
+        <h2>Comment ça marche</h2>
+        <p><b>Note globale.</b> À partir des données de pistes d'OpenStreetMap, PisteLens mesure le terrain de chaque piste : sa longueur, sa
+        pente moyenne et maximale, les variations de pente, son caractère sinueux et son mode de damage. Un modèle d'apprentissage automatique
+        entraîné sur des milliers de pistes transforme ces mesures en une note globale allant de 0 (débutant) à 5 (extrême). Comme elle ne tient
+        compte que du terrain, cette note a la même signification dans toutes les stations.</p>
+
+        <p><b>Calibrage.</b> PisteLens apprend aussi le degré de sévérité ou de générosité de chaque station dans ses classements. Choisissez une
+        station que vous connaissez, et la note globale de n'importe quelle piste pourra être convertie en la difficulté que cette station lui
+        attribuerait probablement, dans des termes qui vous sont déjà familiers.</p>
+
+        <h2>Ce que vous pouvez faire</h2>
+        <ul>
+            <li>Rechercher des pistes par nom, station, difficulté, longueur et damage sur la page <a href="index-fr.html">Accueil</a>.</li>
+            <li>Évaluer votre propre parcours à partir d'un fichier GPX ou des caractéristiques de son terrain sur la page <a href="tools-fr.html">Outils avancés</a>.</li>
+            <li>Télécharger le jeu de données complet et le modèle sur la page <a href="data-fr.html">Données</a>.</li>
+        </ul>
+
+        <p class="softenifyes">PisteLens est un guide, pas une garantie. La neige, la météo et votre propre niveau influencent la difficulté ressentie le jour même.</p>
+    </div>
+</main>
+
+<footer>
+    Coucou
+</footer>
+
+</body>
+</html>

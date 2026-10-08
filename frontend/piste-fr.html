@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PisteLens</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <span class="brand">PisteLens</span>
+  <a href="index-fr.html">Accueil</a>
+  <a href="tools-fr.html">Outils avancés</a>
+  <a href="data-fr.html">Données</a>
+  <a href="about-fr.html">À propos</a>
+  <a href="settings-fr.html">Paramètres</a>
+</nav>
+
+<main>
+  <p><a class="back" href="index-fr.html">Retour à la recherche</a></p>
+
+  <div class="card" id="notfound" hidden>
+    <h1>Piste introuvable</h1>
+    <p class="muted" id="whoopsnotfound"></p>
+  </div>
+
+
+  <div id="piste" hidden>
+    <h1 id="name"></h1>
+
+    <div class="gg">
+
+      <div class="card">
+        <div class="gl">Note globale</div>
+        <div class="gv" id="globalval">-</div>
+        <div id="globalcat"></div>
+        <p class="muted">Il s'agit de la véritable difficulté de la piste, fondée sur son terrain. Elle ne dépend pas des normes de la station.</p>
+      </div>
+
+      <div class="card">
+        <div class="gl">Note calibrée</div>
+        <p class="muted">Si cette piste se trouvait dans la station que vous choisissez ci-dessous, elle serait probablement classée...</p>
+        <div class="gv" id="calval">-</div>
+        <div id="calcat" class="muted">Choisissez une station ci-dessous.</div>
+        <label>
+
+          Calibrer selon
+          <select id="ref">
+            <option value="">Choisir une station</option>
+          </select>
+        </label>
+        <p class="muted" id="calnote"></p>
+      </div>
+    </div>
+
+
+    <h2>Emplacement</h2>
+    <div class="map" id="map"></div>
+    <p class="muted" id="mapnote"></p>
+
+  </div>
+</main>
+
+<footer>
+  Le Yeow est de retour. Méfiez-vous. Il est encore temps de s'échapper. Le compte à rebours est lancé. Isaac arrive.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script> <!-- leaflet für die Karte -->
+<script src="piste-fr.js"></script>
+
+</body>
+</html>

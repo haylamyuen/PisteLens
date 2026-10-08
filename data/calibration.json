@@ -1,0 +1,163 @@
+{
+  "offsets": {
+    "keystone": 0.5147516504931714,
+    "big-sky": 0.3438938570512305,
+    "aspen": 0.3306746580906995,
+    "remarkables": 0.2507891716804827,
+    "vail": 0.17227046488214667,
+    "breckenridge": 0.16624312266821684,
+    "whistler": 0.1406522867469614,
+    "zermatt": 0.08119910977686268,
+    "cardrona": 0.034820853923114736,
+    "sella-ronda": -0.06532708452365636,
+    "thredbo": -0.11779535655874003,
+    "niseko": -0.16713341177029228,
+    "4-vallees": -0.16847051568601804,
+    "jackson-hole": -0.19874037321270882,
+    "hakuba": -0.2064567843440724,
+    "valle-nevado": -0.24515498221805002,
+    "chamonix": -0.344885727097417,
+    "coronet-peak": -0.39933109638231373,
+    "perisher": -0.4244777293215916,
+    "3-vallees": -0.741021876560485
+  },
+  "offset_detail": [
+    {
+      "resort": "keystone",
+      "n": 189,
+      "roffset": 0.5419871875563022,
+      "offset": 0.5147516504931714
+    },
+    {
+      "resort": "big-sky",
+      "n": 563,
+      "roffset": 0.35000209607523103,
+      "offset": 0.3438938570512305
+    },
+    {
+      "resort": "aspen",
+      "n": 475,
+      "roffset": 0.33763622983997743,
+      "offset": 0.3306746580906995
+    },
+    {
+      "resort": "remarkables",
+      "n": 36,
+      "roffset": 0.3204528304806168,
+      "offset": 0.2507891716804827
+    },
+    {
+      "resort": "vail",
+      "n": 245,
+      "roffset": 0.17930191242835675,
+      "offset": 0.17227046488214667
+    },
+    {
+      "resort": "breckenridge",
+      "n": 37,
+      "roffset": 0.2111736963623295,
+      "offset": 0.16624312266821684
+    },
+    {
+      "resort": "whistler",
+      "n": 607,
+      "roffset": 0.14296945786305632,
+      "offset": 0.1406522867469614
+    },
+    {
+      "resort": "zermatt",
+      "n": 375,
+      "roffset": 0.08336441937091235,
+      "offset": 0.08119910977686268
+    },
+    {
+      "resort": "cardrona",
+      "n": 66,
+      "roffset": 0.04009674088116242,
+      "offset": 0.034820853923114736
+    },
+    {
+      "resort": "sella-ronda",
+      "n": 520,
+      "roffset": -0.06658337461064975,
+      "offset": -0.06532708452365636
+    },
+    {
+      "resort": "thredbo",
+      "n": 101,
+      "roffset": -0.12945826314871428,
+      "offset": -0.11779535655874003
+    },
+    {
+      "resort": "niseko",
+      "n": 153,
+      "roffset": -0.17805716417357936,
+      "offset": -0.16713341177029228
+    },
+    {
+      "resort": "4-vallees",
+      "n": 390,
+      "roffset": -0.17279027249848003,
+      "offset": -0.16847051568601804
+    },
+    {
+      "resort": "jackson-hole",
+      "n": 165,
+      "roffset": -0.21078524431650936,
+      "offset": -0.19874037321270882
+    },
+    {
+      "resort": "hakuba",
+      "n": 190,
+      "roffset": -0.2173229308884973,
+      "offset": -0.2064567843440724
+    },
+    {
+      "resort": "valle-nevado",
+      "n": 253,
+      "roffset": -0.25484490246382274,
+      "offset": -0.24515498221805002
+    },
+    {
+      "resort": "chamonix",
+      "n": 123,
+      "roffset": -0.37292521710533705,
+      "offset": -0.344885727097417
+    },
+    {
+      "resort": "coronet-peak",
+      "n": 40,
+      "roffset": -0.4991638704778921,
+      "offset": -0.39933109638231373
+    },
+    {
+      "resort": "perisher",
+      "n": 158,
+      "roffset": -0.4513434083925784,
+      "offset": -0.4244777293215916
+    },
+    {
+      "resort": "3-vallees",
+      "n": 1374,
+      "roffset": -0.7464150488789747,
+      "offset": -0.741021876560485
+    }
+  ],
+  "difficulties": [
+    "novice",
+    "easy",
+    "intermediate",
+    "advanced",
+    "expert",
+    "extreme"
+  ],
+  "feats": [
+    "length",
+    "avg_grade",
+    "avg_abs_grade",
+    "max_abs_grade",
+    "grade_std",
+    "sinuosity",
+    "grooming"
+  ]
+}

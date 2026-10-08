@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a class="active" href="index.html">Home</a>
+    <a href="tools.html">Advanced Tools</a>
+    <a href="data.html">Data</a>
+    <a href="about.html">About</a>
+    <a href="settings.html">Settings</a>
+</nav>
+
+<main>
+
+
+    <div class="hero">
+        <h1>Welcome, Snowbender</h1>
+        <p class="underneath_thing">Search for a piste to begin...</p>
+    </div>
+
+    <div class="searchbar">
+        <input type="search" id="q" placeholder="Search a piste or resort..." autocomplete="on">
+        <button type="button" id="filter" aria-expanded="false">Filters</button>
+        <button type="button" class="primary" id="searchbutton">Search</button>
+    </div>
+
+    <div class="filters card" id="filters" hidden>
+        <div class="filtergrid">
+            <label>
+                Resort
+                <select id="fresort">
+                    <option value="">All Resorts</option>
+                </select>
+            </label>
+
+            <label>
+                Official Grade
+                <select id="fgrade">
+                    <option value="">Any Grade</option>
+                    <option value="novice">Novice</option>
+                    <option value="easy">Easy</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="expert">Expert</option>
+                    <option value="extreme">Extreme</option>
+                </select>
+            </label>
+
+            <label>
+                Grooming
+                <select id="fgrooming">
+                    <option value="">Any surface</option>
+                    <option value="classic">Groomed</option>
+                    <option value="mogul">Mogul</option>
+                    <option value="backcountry">Ungroomed</option>
+                </select>
+
+            </label>
+
+            <label>
+                Global Rating
+                <span class="range">
+                    <input type="number" id="fratingmin" min="0" max="5" step="0.1" placeholder="min">
+                    <span class="softenifyes">to</span>
+                    <input type="number" id="fratingmax" min="0" max="5" step="0.1" placeholder="max">
+                </span>
+            </label>
+
+            <label>
+                Length (m)
+                <span class="range">
+                    <input type="number" id="flenmin" min="0" step="1" placeholder="min">
+                    <span class="softenifyes">to</span>
+                    <input type="number" id="flenmax" min="0" step="1" placeholder="max">
+                </span>
+            </label>
+        </div>
+        <p><button type="button" id="clearbtn">Clear Filters</button></p>
+    </div>
+
+    <div id="resultspanel" hidden>
+    <p class="count" id="count"></p>
+
+    <div class="tableee">
+    <table>
+        <thread>
+            <tr>
+                <th>Run</th>
+                <th>Resort</th>
+                <th>Official Grade</th>
+                <th>Global Rating</th>
+                <th>Length</th>
+            </tr>
+        </thread>
+        <tbody id="results"></tbody>
+        
+    </table>
+    </div>
+    </div>
+
+</main>
+
+<footer>
+    The Yeow has Returned. Beware. There is still time to escape. The clock is ticking. Isaac is coming.
+</footer>
+
+<script src="search.js"></script>
+
+</body>

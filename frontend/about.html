@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PisteLens | About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<nav>
+    <span class="brand">PisteLens</span>
+    <a href="index.html">Home</a>
+    <a href="tools.html">Advanced Tools</a>
+    <a href="data.html">Data</a>
+    <a class="active" href="about.html">About</a>
+    <a href="settings.html">Settings</a>
+</nav>
+
+<main>
+    <h1>About PisteLens</h1>
+
+    <div class="card">
+        <h2>The problem</h2>
+        <p>Every ski resort grades its own runs, and every resort does it differently. An intermediate run at one resort might feel like an 
+            advanced run at another, so a grade on a trail map does not tell you much when you visit somewhere new.</p>
+
+        <h2>The goal</h2>
+        <p>PisteLens gives every run a fair, comparable difficulty based only on its terrain, so you can tell how hard a run really is before 
+            you get to the top of it.</p>
+
+        <h2>How it works</h2>
+        <p><b>Global rating.</b> Using piste data from OpenStreetMap, PisteLens measures each run's terrain: its length, how steep it is on 
+        average and at its steepest, how much the steepness changes, how much it winds, and how it is groomed. A machine learning model trained 
+        on thousands of runs turns these measurements into a global rating from 0 (novice) to 5 (extreme). Because it only looks at the terrain, 
+        the rating means the same thing at every resort.</p>
+        
+        <p><b>Calibration.</b> PisteLens also learns how strict or generous each resort is with its grades. Pick a resort you know, and any 
+        run's global rating can be converted into the grade that resort would probably give it, in terms you are already used to.</p>
+
+        <h2>What you can do</h2>
+        <ul>
+            <li>Search runs by name, resort, grade, length and grooming on the <a href="index.html">Home</a> page.</li>
+            <li>Grade your own route from a GPX file or its terrain features on the <a href="tools.html">Advanced Tools</a> page.</li>
+            <li>Download the full dataset and model on the <a href="data.html">Data</a> page.</li>
+        </ul>
+
+        <p class="softenifyes">PisteLens is a guide, not a guarantee. Snow, weather and your own skill all change how hard a run feels on the day.</p>
+    </div>
+</main>
+
+<footer>
+    Peekaboo
+</footer>
+
+</body>
+</html>
+
