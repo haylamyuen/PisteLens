@@ -1,6 +1,7 @@
 from typing import Dict, List
-import catboost as cb
+import lightgbm as lgb
 import pandas as pd
+import numpy as np
 
 FEATS = ["length", "avg_grade", "avg_abs_grade", "max_abs_grade", "grade_std", "sinuosity", "grooming"]
 
@@ -10,13 +11,22 @@ DIFFICULTIES = ["novice", "easy", "intermediate", "advanced", "expert", "extreme
 DIFF_TO_ORD = {name: i for i, name in enumerate(DIFFICULTIES)}
 ORD_TO_DIFF = {i: name for name, i in DIFF_TO_ORD.items()}
 
-
-def baseline(avg_abs_grade: float) -> str:
-    for thresh, label in ((0.10, "novice"), (0.25, "easy"), (0.40, "intermediate"), (0.55, "advanced"), (0.70, "expert"), (float("inf"), "extreme")):
-        if avg_abs_grade < thresh:
-            return label
-    return "extreme"
-
+def model_params() -> dict:
+    # hyperparams configured using advice from many YT videos, reddit, and manual tweaking
+    return dict(
+        objective = "regression",
+        n_estimators = 70,
+        max_depth = 5, # to avoid overfitting
+        num_leaves = 25,
+        min_child_samples = 15,
+        learning_rate = 0.07,
+        colsample_bytree = 0.8,
+        min_split_gain = 0.02,
+        reg_alpha = 0.01,
+        reg_lambda = 1,
+        random_state = 67, #heeheehee
+        verbose = -1
+    )
 
 def loadd(csvs: List[str]) -> pd.DataFrame:
     macduff = pd.read_csv(csvs)
@@ -26,6 +36,8 @@ def loadd(csvs: List[str]) -> pd.DataFrame:
     macduff = macduff[macduff["type"] == "downhill"]
     macduff = macduff[(macduff["length"] > 0) & (macduff["avg_abs_grade"] > 0) & (macduff["max_abs_grade"] > 0)]
     macduff["diff_ord"] = macduff["difficulty"].map(DIFF_TO_ORD)
+    macduff["grooming"] = macduff["grooming"].astype("category")
+
     print(f"Loaded {len(macduff)} rows")
 
     if macduff.empty:
@@ -36,7 +48,6 @@ def loadd(csvs: List[str]) -> pd.DataFrame:
 
 def evaluate(name: str, y: List[int], y_pred: List[int]) -> Dict[str, float]:
     acc = sum(1 for t, p in zip(y, y_pred) if t == p) / len(y)
-
     w1 = 0
     for a, b in zip(y, y_pred):
         if abs(a-b) <= 1:
@@ -56,22 +67,14 @@ def trainervaluator(train: pd.DataFrame, test: pd.DataFrame, heldout: str) -> Di
     testx = test[FEATS]
     testy = test["diff_ord"]
 
-    model = cb.CatBoostClassifier(
-        loss_function = "MultiClass",
-        iterations = 100,
-        depth = 4, # to avoid overfitting
-        min_data_in_leaf = 5,
-        cat_features = CAT_FEETS,
-        random_state = 67, #heeheehee
-        verbose = False
-    )
-    model.fit(trainx, trainy)
+    model = lgb.LGBMRegressor(**model_params())
+    model.fit(trainx, trainy, categorical_feature = CAT_FEETS)
 
-    cap = model.predict(testx).flatten() # flatten needed b/c Catboost returns a (N, 1) vector for some reason
-    nap = test["avg_abs_grade"].apply(baseline).map(DIFF_TO_ORD).tolist()
+    cap_cont = model.predict(testx)
+    cap = np.clip(np.rint(cap_cont), 0, len(DIFFICULTIES)-1).astype(int)
 
-    evaluate("Baseline", testy.tolist(), nap)
-    bonk = evaluate("CatBoost", testy.tolist(), cap.tolist())
+    bonk = evaluate("LightGBM", testy.tolist(), cap.tolist())
+    bonk["continuous"] = cap_cont.tolist()
 
     return bonk
 

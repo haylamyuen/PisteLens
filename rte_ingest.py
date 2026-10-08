@@ -57,7 +57,6 @@ def distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return math.sqrt(dx**2 + dy**2)
 
 def fetch_elev(batch: List[Point]) -> List[float]:
-    # https://github.com/Jorl17/open-elevation/blob/master/docs/api.md
     thingos = [
         ("Open-Elevation", "https://api.open-elevation.com/api/v1/lookup", {"locations": [{"latitude":p.lat, "longitude":p.lon} for p in batch]}),
         ("Open Topo Data", "https://api.opentopodata.org/v1/srtm90m", {"locations": "|".join(f"{p.lat},{p.lon}" for p in batch)})
@@ -98,33 +97,30 @@ def fill_elev(points: List[Point] ) -> None:
  
 
 # smoothing needed cuz raw data is noisey
-def smooth(points: List[Point], window: int = SMOOTHER) -> None:
+def smooth(points: List[Point]) -> None:
     elevations = [p.elev for p in points] # make copy before smoothing otherwise the smoothed profile will be skewed
-    potato = window // 2
+    potato = SMOOTHER // 2
     smoothed = []
 
     # sma used for now, weighted average would probably be better
     for i in range(len(elevations)):
-        lo, hi = max(0,i-potato), min(len(elevations),i+potato+1)
+        lo, hi = max(0,i-potato), min(len(elevations),i+potato+1) #window low high indices
         vals = elevations[lo:hi]
         smoothed.append(sum(vals) / len(vals))
     for point, value in zip(points, smoothed):
         point.elev = value
 
-
-
 def elev_at(d: float, points: List[Point] ) ->  float:
     for prev, curr in zip(points, points[1:]):
-        if prev.cumdist <= d <= curr.cumdist: # safeguard against funky data
-            span = curr.cumdist - prev.cumdist
-            if span == 0: # protects against duplicate GPS points
-                return prev.elev
-            
-            t = (d-prev.cumdist) / span
-            return prev.elev + t*(curr.elev-prev.elev)
+        span = curr.cumdist - prev.cumdist
+        if span == 0: # protects against duplicate GPS points
+            return prev.elev
+        
+        t = (d-prev.cumdist) / span
+        return prev.elev + t*(curr.elev-prev.elev) # linear interpolation
     return points[-1].elev
 
-def resample(points: List[Point] , SEG_LEN: float = SEG_LEN) -> List[Segment]:
+def resample(points: List[Point] ,SEG_LEN: float = SEG_LEN) -> List[Segment]:
     totaldist = points[-1].cumdist
     if totaldist <= 0:
         raise ValueError("Invalid distance.")
@@ -135,7 +131,7 @@ def resample(points: List[Point] , SEG_LEN: float = SEG_LEN) -> List[Segment]:
     cutd = sorted(set(cutd)) # used set to remove duplicates in rare case totaldist lands on grid
 
     segments = []
-    for start_d,  end_d in zip(cutd, cutd[1:]):
+    for start_d, end_d in zip(cutd, cutd[1:]):
         start_elev = elev_at(start_d, points)
         end_elev = elev_at(end_d, points)
 

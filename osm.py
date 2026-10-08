@@ -8,7 +8,7 @@ ENDPOINTS = [
     "https://z.overpass-api.de/api/interpreter",
     "https://overpass-api.de/api/interpreter"
 ]
-HEADER = {"User-Agent": "Student Project"} # https://github.com/drolbr/Overpass-API/issues/791
+HEADER = {"User-Agent": "PisteLens/1.0; https://github.com/haylamyuen/PisteLens"} # https://github.com/drolbr/Overpass-API/issues/791
 TIMEOUT = 90
 
 @dataclass
@@ -18,16 +18,15 @@ class Piste:
     difficulty: Optional[str]
     type: Optional[str]
     grooming: Optional[str]
-
     points: List[Tuple[float, float]]
 
 
 # https://www.youtube.com/watch?v=M_1Sas9l57o
 def create_qbbox(bbox: Tuple[float, float, float, float], limit: int = None) -> str:
     south, west, north, east = bbox
-    return f"""[out:json][timeout:{TIMEOUT}];(way["piste:type"]({south},{west},{north},{east}););out geom {limit if limit is not None else ""};"""
-def create_qarea(area_name: str, limit: int = None) -> str:
-    return f"""[out:json][timeout:{TIMEOUT}];area["name"="{area_name}"]->.searchArea;(way["piste:type"](area.searchArea););out geom {limit if limit is not None else ""};"""
+    return f"""[out:json][timeout:{TIMEOUT}];
+            (way["piste:type"]({south},{west},{north},{east}););
+            out geom {limit if limit is not None else ""};"""
 
 def parse(data: dict) -> List[Piste ]:
     ways=  []
@@ -73,9 +72,5 @@ def query_op(query: str)  -> dict:
 
 def fetch_bbox(bbox: Tuple[float, float, float, float], limit: Optional[int] = None) -> List[Piste] :
     query = create_qbbox(bbox, limit=limit)
-    data = query_op(query)
-    return parse(data)
-def fetch_area(area_name: str, limit: Optional[int] = None) -> List[Piste]:
-    query = create_qarea(area_name, limit=limit)
     data = query_op(query)
     return parse(data)
