@@ -1,7 +1,7 @@
 [project]
 name = "pistelens"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.0.0"
+description = "A student ski piste grading app"
 readme = "README.md"
 authors = [
     { name = "Haylam Yuen", email = "129972883+haylamyuen@users.noreply.github.com" }
